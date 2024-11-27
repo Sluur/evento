@@ -9,16 +9,17 @@ import Image from "next/image";
 import React from "react";
 import { formatDate } from "react-datepicker/dist/date_utils";
 
-const EventDetails = async ({
-  params: { id },
-  searchParams,
-}: SearchParamProps) => {
-  const event = await getEventById(id);
+const EventDetails = async ({ params, searchParams }: SearchParamProps) => {
+  const { id } = await params;
+  const resolvedSearchParams = await searchParams;
+  const page = resolvedSearchParams.page || "1";
+
+  const event = await getEventById(id); // Obtenemos el evento por su ID
 
   const relatedEvents = await getRelatedEventsByCategory({
     categoryId: event.category._id,
     eventId: event._id,
-    page: searchParams.page as string,
+    page: typeof page === "string" ? page : page[0], // Aseguramos que `page` sea un string
   });
 
   return (

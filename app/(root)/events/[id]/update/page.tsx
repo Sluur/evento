@@ -5,16 +5,17 @@ import { auth } from "@clerk/nextjs/server";
 import React from "react";
 
 type UpdateEventProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
-const UpdateEvent = async ({ params: { id } }: UpdateEventProps) => {
-  const event = await getEventById(id);
+const UpdateEvent = async ({ params }: UpdateEventProps) => {
+  const { id } = await params; // Esperamos a que `params` se resuelva para obtener `id`
 
-  const { sessionClaims } = await auth();
+  const event = await getEventById(id); // Obtenemos el evento por su ID
 
+  const { sessionClaims } = await auth(); // Obtenemos los claims de la sesión actual
   const userId = sessionClaims?.userId as string;
 
   return (
