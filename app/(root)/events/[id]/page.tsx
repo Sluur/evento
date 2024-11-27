@@ -9,22 +9,25 @@ import React from "react";
 import { formatDate } from "react-datepicker/dist/date_utils";
 
 export type SearchParamProps = {
-  params: { id: string }; // params es un objeto, no una promesa
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ id: string }>; // params is a Promise
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>; // searchParams is a Promise
 };
 
 const EventDetails = async ({ params, searchParams }: SearchParamProps) => {
-  const { id } = params; // `params` contiene la URL con el ID
-  const page = searchParams.page || "1"; // searchParams ya es un objeto, no es necesario await
+  const { id } = await params;
+  const { page } = await searchParams;
 
-  const event = await getEventById(id); // Obtenemos el evento por su ID
+  // Safely handle `page` to ensure it's a valid string or number
+  const pageNumber = Array.isArray(page) ? page[0] : page; // If it's an array, take the first element
+  const validPage = pageNumber ? String(pageNumber) : "1"; // Default to "1" if `page` is undefined
+
+  const event = await getEventById(id);
 
   const relatedEvents = await getRelatedEventsByCategory({
     categoryId: event.category._id,
     eventId: event._id,
-    page: typeof page === "string" ? page : page[0], // Aseguramos que `page` sea un string
+    page: validPage, // Ensure `page` is a string
   });
-
   return (
     <>
       <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
