@@ -4,15 +4,18 @@ import {
   getRelatedEventsByCategory,
 } from "@/lib/actions/event.actions";
 import { formatDateTime } from "@/lib/utils";
-import { SearchParamProps } from "@/types";
 import Image from "next/image";
 import React from "react";
 import { formatDate } from "react-datepicker/dist/date_utils";
 
+export type SearchParamProps = {
+  params: { id: string }; // params es un objeto, no una promesa
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
 const EventDetails = async ({ params, searchParams }: SearchParamProps) => {
-  const { id } = await params;
-  const resolvedSearchParams = await searchParams;
-  const page = resolvedSearchParams.page || "1";
+  const { id } = params; // `params` contiene la URL con el ID
+  const page = searchParams.page || "1"; // searchParams ya es un objeto, no es necesario await
 
   const event = await getEventById(id); // Obtenemos el evento por su ID
 
