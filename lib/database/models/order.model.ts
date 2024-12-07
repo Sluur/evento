@@ -1,4 +1,4 @@
-import { Schema, Document, models, model } from "mongoose";
+import { Schema, model, models, Document } from "mongoose";
 
 export interface IOrder extends Document {
   createdAt: Date;
@@ -14,6 +14,15 @@ export interface IOrder extends Document {
     lastName: string;
   };
 }
+
+export type IOrderItem = {
+  _id: string;
+  totalAmount: string;
+  createdAt: Date;
+  eventTitle: string;
+  eventId: string;
+  buyer: string;
+};
 
 const OrderSchema = new Schema({
   createdAt: {
