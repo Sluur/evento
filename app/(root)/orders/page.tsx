@@ -4,11 +4,12 @@ import { formatDateTime, formatPrice } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import { IOrderItem } from "@/lib/database/models/order.model";
 
-const Orders = async ({
-  searchParams,
-}: {
-  searchParams: Record<string, string | undefined>;
-}) => {
+type PageProps = {
+  searchParams?: Record<string, string | undefined>;
+  params?: Record<string, any>;
+};
+
+const Orders = async ({ searchParams }: PageProps) => {
   const eventId = searchParams?.eventId || "";
   const searchText = searchParams?.query || "";
 

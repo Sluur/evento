@@ -142,8 +142,3 @@ export type RemoveUrlQueryParams = {
   params: string;
   keysToRemove: string[];
 };
-
-export type SearchParamProps = {
-  searchParams: Record<string, string | undefined>;
-  params?: Record<string, any>;
-};
