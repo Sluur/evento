@@ -50,3 +50,13 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local.
 - MongoDB Atlas (o una instancia local de MongoDB)
 - Claves de API para Clerk y Stripe
 
+---
+
+---
+
+Contacto 📧
+Si tienes alguna pregunta o sugerencia, no dudes en contactarme:
+
+GitHub: Sluur
+Linkedin: https://www.linkedin.com/in/rodrigoleonelharo/
+Email: rodrigo.l.haro@gmail.com
