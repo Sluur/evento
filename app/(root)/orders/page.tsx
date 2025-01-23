@@ -4,9 +4,13 @@ import { formatDateTime, formatPrice } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import { IOrderItem } from "@/lib/database/models/order.model";
 
-const Orders = async ({ searchParams }: SearchParamProps) => {
-  const eventId = (searchParams?.eventId as string) || "";
-  const searchText = (searchParams?.query as string) || "";
+const Orders = async ({
+  searchParams,
+}: {
+  searchParams: Record<string, string | undefined>;
+}) => {
+  const eventId = searchParams?.eventId || "";
+  const searchText = searchParams?.query || "";
 
   const orders = await getOrdersByEvent({ eventId, searchString: searchText });
 
