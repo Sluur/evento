@@ -13,8 +13,11 @@ export default async function ProfilePage({ searchParams }: SearchParamProps) {
 
   const userId = sessionClaims?.userId as string;
 
-  const ordersPage = Number(searchParams?.ordersPage) || 1;
-  const eventsPage = Number(searchParams?.ordersPage) || 1;
+  // Asegúrate de que searchParams sea una Promise y espera su resolución
+  const resolvedSearchParams = await searchParams;
+
+  const ordersPage = Number(resolvedSearchParams?.ordersPage) || 1;
+  const eventsPage = Number(resolvedSearchParams?.ordersPage) || 1;
 
   const orders = await getOrdersByUser({ userId, page: ordersPage });
 

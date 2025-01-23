@@ -6,11 +6,16 @@ import { IOrderItem } from "@/lib/database/models/order.model";
 const Orders = async ({
   searchParams,
 }: {
-  searchParams: Record<string, string | undefined>;
+  searchParams: Promise<Record<string, string>>;
 }) => {
-  const eventId = searchParams?.eventId || "";
-  const searchText = searchParams?.query || "";
+  // Resuelve searchParams antes de usarlo
+  const resolvedSearchParams = await searchParams;
 
+  // Accede a las propiedades de searchParams después de resolverlo
+  const eventId = resolvedSearchParams?.eventId || "";
+  const searchText = resolvedSearchParams?.query || "";
+
+  // Obtén las órdenes usando los parámetros resueltos
   const orders = await getOrdersByEvent({ eventId, searchString: searchText });
 
   return (
