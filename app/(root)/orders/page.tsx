@@ -3,12 +3,11 @@ import { getOrdersByEvent } from "@/lib/actions/order.actions";
 import { formatDateTime, formatPrice } from "@/lib/utils";
 import { IOrderItem } from "@/lib/database/models/order.model";
 
-type PageProps = {
-  searchParams?: Record<string, string | undefined>;
-  params?: Record<string, any>;
-};
-
-const Orders = async ({ searchParams }: PageProps) => {
+const Orders = async ({
+  searchParams,
+}: {
+  searchParams: Record<string, string | undefined>;
+}) => {
   const eventId = searchParams?.eventId || "";
   const searchText = searchParams?.query || "";
 
@@ -16,7 +15,7 @@ const Orders = async ({ searchParams }: PageProps) => {
 
   return (
     <>
-      <section className=" bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
+      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
         <h3 className="wrapper h3-bold text-center sm:text-left ">Ordenes</h3>
       </section>
 
@@ -38,37 +37,34 @@ const Orders = async ({ searchParams }: PageProps) => {
             </tr>
           </thead>
           <tbody>
-            {orders && orders.length === 0 ? (
+            {orders.length === 0 ? (
               <tr className="border-b">
                 <td colSpan={5} className="py-4 text-center text-gray-500">
                   Sin ordenes encontradas
                 </td>
               </tr>
             ) : (
-              <>
-                {orders &&
-                  orders.map((row: IOrderItem) => (
-                    <tr
-                      key={row._id}
-                      className="p-regular-14 lg:p-regular-16 border-b "
-                      style={{ boxSizing: "border-box" }}
-                    >
-                      <td className="min-w-[250px] py-4 text-primary-500">
-                        {row._id}
-                      </td>
-                      <td className="min-w-[200px] flex-1 py-4 pr-4">
-                        {row.eventTitle}
-                      </td>
-                      <td className="min-w-[150px] py-4">{row.buyer}</td>
-                      <td className="min-w-[100px] py-4">
-                        {formatDateTime(row.createdAt).dateTime}
-                      </td>
-                      <td className="min-w-[100px] py-4 text-right">
-                        {formatPrice(row.totalAmount)}
-                      </td>
-                    </tr>
-                  ))}
-              </>
+              orders.map((row: IOrderItem) => (
+                <tr
+                  key={row._id}
+                  className="p-regular-14 lg:p-regular-16 border-b"
+                  style={{ boxSizing: "border-box" }}
+                >
+                  <td className="min-w-[250px] py-4 text-primary-500">
+                    {row._id}
+                  </td>
+                  <td className="min-w-[200px] flex-1 py-4 pr-4">
+                    {row.eventTitle}
+                  </td>
+                  <td className="min-w-[150px] py-4">{row.buyer}</td>
+                  <td className="min-w-[100px] py-4">
+                    {formatDateTime(row.createdAt).dateTime}
+                  </td>
+                  <td className="min-w-[100px] py-4 text-right">
+                    {formatPrice(row.totalAmount)}
+                  </td>
+                </tr>
+              ))
             )}
           </tbody>
         </table>
