@@ -18,18 +18,6 @@
 
 ---
 
-## Capturas de pantalla 🖼️
-
-### Página de inicio
-![Home Page](https://via.placeholder.com/800x400.png?text=Home+Page)
-
-### Detalles del evento
-![Event Details](https://via.placeholder.com/800x400.png?text=Event+Details)
-
-### Panel de usuario
-![User Dashboard](https://via.placeholder.com/800x400.png?text=User+Dashboard)
-
----
 
 ## Tecnologías utilizadas 🛠️
 
