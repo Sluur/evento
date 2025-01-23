@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Evento 🎉
 
-## Getting Started
+**Evento** es una aplicación web moderna para la gestión y descubrimiento de eventos. Permite a los usuarios crear, explorar y gestionar eventos de manera sencilla, con integración de autenticación, pagos y más.
 
-First, run the development server:
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://evento-zeta-amber.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-blue?style=for-the-badge&logo=github)](https://github.com/Sluur/evento)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Características principales ✨
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Autenticación segura**: Integración con Clerk para un registro y inicio de sesión seguros.
+- **Gestión de eventos**: Los usuarios pueden crear, actualizar y eliminar eventos.
+- **Exploración de eventos**: Filtra eventos por categoría, fecha o ubicación.
+- **Pagos en línea**: Integración con Stripe para la compra de entradas.
+- **Diseño responsive**: Interfaz optimizada para móviles y desktop.
+- **Tecnologías modernas**: Desarrollado con Next.js, TypeScript, Tailwind CSS y MongoDB.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Capturas de pantalla 🖼️
 
-To learn more about Next.js, take a look at the following resources:
+### Página de inicio
+![Home Page](https://via.placeholder.com/800x400.png?text=Home+Page)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Detalles del evento
+![Event Details](https://via.placeholder.com/800x400.png?text=Event+Details)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Panel de usuario
+![User Dashboard](https://via.placeholder.com/800x400.png?text=User+Dashboard)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tecnologías utilizadas 🛠️
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Frontend**: 
+  - Next.js
+  - TypeScript
+  - Tailwind CSS
+- **Backend**:
+  - Node.js
+  - Express (si aplica)
+- **Base de datos**:
+  - MongoDB (usando Mongoose)
+- **Autenticación**:
+  - Clerk
+- **Pagos**:
+  - Stripe
+- **Despliegue**:
+  - Vercel
+
+---
+
+## Cómo ejecutar el proyecto localmente 🚀
+
+Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local.
+
+### Requisitos previos
+
+- Node.js (v18 o superior)
+- npm o yarn
+- MongoDB Atlas (o una instancia local de MongoDB)
+- Claves de API para Clerk y Stripe
+
